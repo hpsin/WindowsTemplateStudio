@@ -14,9 +14,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
-using Microsoft.Templates.Core.Gen;
 
+using Microsoft.Templates.Core.Gen;
 using Microsoft.Templates.Core.Resources;
 
 namespace Microsoft.Templates.Core.PostActions.Catalog.Merge
@@ -73,7 +74,7 @@ namespace Microsoft.Templates.Core.PostActions.Catalog.Merge
             else
             {
                 Fs.EnsureFileEditable(originalFilePath);
-                File.WriteAllLines(originalFilePath, result);
+                File.WriteAllLines(originalFilePath, result, Encoding.UTF8);
                 // REFRESH PROJECT TO UN-DIRTY IT
                 if (Path.GetExtension(_config.FilePath).Equals(".csproj", StringComparison.OrdinalIgnoreCase) && (GenContext.Current.OutputPath == GenContext.Current.ProjectPath))
                 {

@@ -11,7 +11,7 @@
 // ******************************************************************
 
 using System.IO;
-using System.Linq;
+using System.Text;
 
 namespace Microsoft.Templates.Test.Artifacts.MSBuild
 {
@@ -53,7 +53,7 @@ EndProject
         public static MSBuildSolution Create(string path)
         {
             var solutionTemplate = ReadTemplate();
-            File.WriteAllText(path, solutionTemplate);
+            File.WriteAllText(path, solutionTemplate, Encoding.UTF8);
 
             return new MSBuildSolution(path);
         }
@@ -78,7 +78,7 @@ EndProject
 
             }
 
-            File.WriteAllText(_path, slnContent);
+            File.WriteAllText(_path, slnContent, Encoding.UTF8);
         }
 
         private static string ReadTemplate()
